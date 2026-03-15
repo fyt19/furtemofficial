@@ -3,9 +3,10 @@ const nextConfig = {
   output: 'export',
   // Resim optimizasyonu için dış kaynaklara izin veriyoruz
   images: {
-      remotePatterns: [
-          { protocol: "https", hostname: "**" },
-      ],
+    unoptimized: true, // Required for static export (output: 'export')
+    remotePatterns: [
+      { protocol: "https", hostname: "**" },
+    ],
   },
 };
 
