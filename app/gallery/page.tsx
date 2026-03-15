@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Camera, Instagram } from "lucide-react";
 
 // --- GALERİ RESİMLERİ ---
-// Buraya public klasörüne atacağın kişisel fotoğraflarının isimlerini yaz.
-// Farklı boyutlarda (dikey/yatay) resimler kullanırsan 'bento' grid daha güzel durur.
+// Projelerden ve ofis yaşamından görseller. Farklı boyutlarda (dikey/yatay) resimler bento grid'i güçlendirir.
 const galleryItems = [
   { src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80", size: "col-span-1 row-span-1", title: "Kodlama Gecesi" },
   { src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80", size: "col-span-1 md:col-span-2 row-span-2", title: "Takım Çalışması" }, // Büyük Resim
@@ -29,7 +29,9 @@ export default function Gallery() {
             <Link href="/" className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-sm font-medium">
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Ana Sayfa
             </Link>
-            <div className="text-xl font-bold tracking-tighter">FYT<span className="text-cyan-500">.</span></div>
+            <Link href="/" className="flex items-center">
+              <Image src="/furtem-logo.webp" alt="Furtem" width={120} height={32} className="h-8 w-auto invert" />
+            </Link>
         </header>
 
         {/* Başlık */}
@@ -38,10 +40,10 @@ export default function Gallery() {
                 <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-5xl md:text-7xl font-black mb-4">
                     Galeri
                 </motion.h1>
-                <p className="text-neutral-400 text-lg">Kod satırlarının arkasındaki yaşam, anılar ve kareler.</p>
+                <p className="text-neutral-400 text-lg">Projelerimizden ve ofis yaşamımızdan kareler.</p>
             </div>
-            <a href="https://instagram.com" target="_blank" className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors">
-                <Instagram size={20} /> Instagram'da Takip Et
+            <a href="https://instagram.com/furtem" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors">
+                <Instagram size={20} /> Instagram
             </a>
         </div>
 

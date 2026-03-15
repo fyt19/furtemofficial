@@ -3,11 +3,11 @@
 import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform, Variants } from "framer-motion";
 import { 
   Github, Linkedin, ArrowRight, Code2, 
-  Database, Server, Smartphone, Download,
-  Briefcase, GraduationCap, Globe, Layers,
-  Sun, Moon, User
+  Database, Smartphone, Briefcase, Globe, Layers,
+  Sun, Moon, Users
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useState, useEffect, MouseEvent, useRef } from "react";
 
@@ -96,11 +96,10 @@ const projects = [
 ];
 
 const timeline = [
-  { year: "2026", title: "Yüksek Lisans", desc: "Yazılım Mühendisliği Yüksek Lisansına başladım.", icon: GraduationCap },
-  { year: "2025", title: "Mezuniyet & Profesyonel Kariyer", desc: "Niğde Ömer Halisdemir Üni. Bilgisayar Müh. mezuniyeti. Adapha AI ve Kargom Ucuz (Xristal) şirketlerinde Mühendis ve Backend Developer olarak görev alma.", icon: Briefcase },
-  { year: "2024", title: "Full Stack Stajları", desc: "Tema Yazılım ve Atmosveri şirketlerinde E-ticaret, Flutter ve QR sistemleri üzerine yoğun staj dönemleri.", icon: Code2 },
-  { year: "2021", title: "Üniversite & TÜBİTAK", desc: "Bilgisayar Mühendisliği bölümüne başlangıç. TÜBİTAK araştırmacısı olarak büyük veri analizi ve Göktürk Takımı ile gömülü sistemler çalışmaları.", icon: Database },
-  { year: "2020", title: "Merhaba Dünya", desc: "Yazılım dünyasına ilk adım. HTML ve CSS ile web geliştirme temellerinin atılması.", icon: Globe }
+  { year: "2026", title: "Furtem Kuruluş", desc: "Dijital ürünler ve marka deneyimi odaklı ajans olarak yola çıktık.", icon: Briefcase },
+  { year: "2025", title: "Proje Portföyü", desc: "E-ticaret, sosyal platform, CMS ve mobil uygulama projeleriyle güçlü bir referans tabanı oluşturduk.", icon: Code2 },
+  { year: "2024", title: "Teknoloji Stack", desc: "Next.js, Flutter, Node.js ve modern araçlarla tam kapsamlı geliştirme yetkinliği.", icon: Database },
+  { year: "2023", title: "İlk Referanslar", desc: "Ödüllü sosyal projeler ve kurumsal yazılımlarla sektörde tanınırlık.", icon: Globe }
 ];
 
 export default function Portfolio() {
@@ -142,10 +141,9 @@ export default function Portfolio() {
       <div className="fixed inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.06] pointer-events-none z-0"></div>
 
       <nav className="fixed top-0 w-full p-6 px-4 md:px-8 flex justify-between items-center z-50 bg-white/70 dark:bg-[#050505]/80 backdrop-blur-xl border-b border-neutral-200 dark:border-white/5">
-         <div className="text-xl font-bold tracking-tighter flex items-center gap-2">
-            <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
-            FYT
-         </div>
+         <Link href="/" className="flex items-center gap-2">
+            <Image src="/furtem-logo.webp" alt="Furtem" width={120} height={32} className="h-8 w-auto" priority />
+         </Link>
          
          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-600 dark:text-neutral-400">
             <Link href="/projects" className="hover:text-black dark:hover:text-white transition-colors">Projeler</Link>
@@ -158,7 +156,7 @@ export default function Portfolio() {
                 {theme === "dark" ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} className="text-neutral-700" />}
               </button>
             )}
-            <a href="mailto:ohufyt@gmail.com" className="hidden md:block px-5 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black font-bold text-sm hover:opacity-80 transition-opacity">İletişim</a>
+            <a href="mailto:info@furtem.com" className="hidden md:block px-5 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black font-bold text-sm hover:opacity-80 transition-opacity">İletişim</a>
          </div>
       </nav>
 
@@ -177,19 +175,19 @@ export default function Portfolio() {
                     className="md:col-span-2 text-center origin-center md:origin-left z-20"
                 >
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-sm text-cyan-600 dark:text-cyan-400 font-bold tracking-wide">
-                        🚀 Freelance Projeler İçin Uygun
+                        🚀 Dijital Ajans
                     </motion.div>
 
                     <h1 className="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.9]">
                         NEXT <br /> LEVEL <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500 animate-gradient">
-                            CREATOR.
+                            DİJİTAL.
                         </span>
                     </h1>
 
                     <div className="md:hidden mt-8">
                          <p className="text-neutral-600 dark:text-neutral-400 text-lg mb-8">
-                            Merhaba, ben Furkan. Modern web teknolojileriyle sıradışı dijital deneyimler tasarlıyorum.
+                            Furtem olarak web, mobil ve dijital ürünlerde sıradışı deneyimler tasarlıyoruz.
                         </p>
                         <div className="flex flex-col gap-4 justify-center items-center">
                             <Link href="/projects" className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full w-full flex justify-center items-center gap-2">
@@ -204,15 +202,14 @@ export default function Portfolio() {
                     className="hidden md:block absolute right-4 md:right-20 top-1/2 -translate-y-1/2 max-w-md text-right z-20"
                 >
                     <p className="text-neutral-600 dark:text-neutral-400 text-2xl font-medium leading-relaxed mb-8 bg-white/50 dark:bg-black/50 backdrop-blur-sm p-4 rounded-2xl border border-transparent">
-                        Merhaba, ben Furkan. <br/>
-                        Modern web teknolojileriyle <span className="text-black dark:text-white underline decoration-cyan-500 underline-offset-4">sıradışı</span> dijital deneyimler tasarlıyorum.
+                        Furtem olarak <span className="text-black dark:text-white underline decoration-cyan-500 underline-offset-4">sıradışı</span> web, mobil ve dijital ürünler tasarlıyoruz.
                     </p>
                     <div className="flex flex-col gap-4 items-end">
                         <Link href="/projects" className="px-10 py-5 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 shadow-lg shadow-cyan-500/20">
-                           Çalışmalarım <ArrowRight size={20} />
+                           Çalışmalarımız <ArrowRight size={20} />
                         </Link>
-                        <a href="/cv.pdf" download className="px-10 py-5 border border-neutral-300 dark:border-white/20 font-bold rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 transition-all flex items-center gap-2">
-                           CV İndir <Download size={20} />
+                        <a href="mailto:info@furtem.com" className="px-10 py-5 border border-neutral-300 dark:border-white/20 font-bold rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 transition-all flex items-center gap-2">
+                           Teklif Al <ArrowRight size={20} />
                         </a>
                     </div>
                 </motion.div>
@@ -233,21 +230,58 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* HAKKIMDA */}
+      {/* HAKKIMIZDA */}
       <section className="py-24 px-4 bg-white/50 dark:bg-neutral-900/30 relative z-10 border-b border-neutral-200 dark:border-white/5 backdrop-blur-lg">
         <div className="max-w-4xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="inline-block p-4 rounded-full bg-cyan-500/10 mb-6">
-                <User size={32} className="text-cyan-500" />
+                <Users size={32} className="text-cyan-500" />
             </motion.div>
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold mb-8">
-                Hakkımda
+                Hakkımızda
             </motion.h2>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
-                Backend ağırlıklı çalışan; <span className="text-cyan-600 dark:text-cyan-400">mobil, web, masaüstü ve gömülü sistemler</span> üzerinde çözümler geliştiren bir bilgisayar mühendisiyim.
+                <span className="text-cyan-600 dark:text-cyan-400">Web, mobil ve dijital ürünler</span> alanında markanızı bir üst seviyeye taşıyacak çözümler üretiyoruz.
             </motion.p>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-neutral-500 dark:text-neutral-400 mt-6 max-w-3xl mx-auto">
-                API mimarisi, veri tabanı yönetimi ve gerçek zamanlı sistemlerde deneyimliyim. Yapay zeka ve mikrodenetleyici tabanlı projelerle çok disiplinli altyapılarda rol alıyorum. Ayrıca 700+ öğrencili bir Udemy eğitmeniyim.
+                E-ticaret, sosyal platformlar, kurumsal yazılımlar ve mobil uygulamalarda deneyimli ekibimizle; tasarımdan yayına kadar tek elden hizmet sunuyoruz.
             </motion.p>
+        </div>
+      </section>
+
+      {/* EKİBİMİZ */}
+      <section className="py-24 px-4 relative z-10 bg-neutral-100 dark:bg-[#080808] border-b border-neutral-200 dark:border-white/5">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold mb-4 text-center">
+            Ekibimiz
+          </motion.h2>
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center text-neutral-500 dark:text-neutral-400 mb-16">
+            Bilgisayar mühendisleri ekibimizle tanışın.
+          </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[
+              { initial: "F", name: "Furkan Yüksel Temelci", gradient: "from-cyan-500 to-blue-600", ring: "ring-cyan-500/30" },
+              { initial: "M", name: "Mehmethan Yılmaz", gradient: "from-violet-500 to-purple-600", ring: "ring-violet-500/30" },
+              { initial: "O", name: "Oğuzhan Yıldırır", gradient: "from-amber-500 to-orange-600", ring: "ring-amber-500/30" },
+            ].map((member, index) => (
+              <motion.div
+                key={member.initial}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                whileHover={{ y: -8 }}
+                className="group flex flex-col items-center text-center"
+              >
+                <div className={`relative mb-6 rounded-full bg-gradient-to-br ${member.gradient} p-[3px] shadow-xl ${member.ring} ring-4 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl`}>
+                  <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white dark:bg-neutral-900 text-3xl font-black text-neutral-800 dark:text-white border-4 border-white dark:border-neutral-800">
+                    {member.initial}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">{member.name}</h3>
+                <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium">Bilgisayar Mühendisi</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -255,8 +289,8 @@ export default function Portfolio() {
       <section className="py-20 px-4 relative z-10 bg-white dark:bg-[#050505]">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 text-center md:text-left">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">Uzmanlık Alanlarım</h2>
-            <p className="text-xl text-neutral-500 max-w-2xl">Sadece kod yazmıyorum; yaşayan, nefes alan ve etkileşim kuran sistemler inşa ediyorum.</p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">Hizmetlerimiz</h2>
+            <p className="text-xl text-neutral-500 max-w-2xl">Sadece kod yazmıyoruz; markanız için yaşayan, nefes alan dijital deneyimler inşa ediyoruz.</p>
           </motion.div>
 
           <motion.div 
@@ -339,10 +373,10 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* KARİYER YOLCULUĞU (GÜNCELLENDİ) */}
+      {/* YOLCULUĞUMUZ */}
       <section className="py-32 px-4 relative z-10">
          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-16 text-center">Kariyer Yolculuğu</h2>
+            <h2 className="text-4xl font-bold mb-16 text-center">Yolculuğumuz</h2>
             <div className="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-neutral-200 before:dark:via-neutral-800 before:to-transparent">
               {timeline.map((item, index) => (
                 <motion.div key={index} initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.5, delay: index * 0.2 }} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
@@ -366,15 +400,15 @@ export default function Portfolio() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/30 blur-[150px] rounded-full pointer-events-none"></div>
         <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">Birlikte Harika İşler Çıkaralım.</h2>
-            <p className="text-neutral-400 text-xl mb-12">Projeniz için teknik bir ortak mı arıyorsunuz? Hemen tanışalım.</p>
+            <p className="text-neutral-400 text-xl mb-12">Projeniz için güvenilir bir dijital ortak mı arıyorsunuz? Hemen konuşalım.</p>
             <div className="flex justify-center gap-6">
-                <a href="mailto:ohufyt@gmail.com" className="px-10 py-5 bg-white text-black font-bold text-lg rounded-full hover:bg-cyan-400 hover:scale-105 transition-all">Mail Gönder</a>
+                <a href="mailto:info@furtem.com" className="px-10 py-5 bg-white text-black font-bold text-lg rounded-full hover:bg-cyan-400 hover:scale-105 transition-all">Mail Gönder</a>
                 <div className="flex gap-4">
-                  <SocialButton icon={<Github size={24} />} link="https://github.com/fyt19" />
-                  <SocialButton icon={<Linkedin size={24} />} link="https://linkedin.com/in/furkanyukseltemelci" />
+                  <SocialButton icon={<Github size={24} />} link="https://github.com/furtem" />
+                  <SocialButton icon={<Linkedin size={24} />} link="https://linkedin.com/company/furtem" />
                 </div>
             </div>
-            <div className="mt-20 pt-10 border-t border-white/10 text-neutral-500 text-sm">© 2026 Furkan Yüksel Temelci. Designed & Coded with Next.js 14.</div>
+            <div className="mt-20 pt-10 border-t border-white/10 text-neutral-500 text-sm">© 2026 Furtem. Tüm hakları saklıdır. Next.js ile geliştirildi.</div>
         </div>
       </footer>
     </main>

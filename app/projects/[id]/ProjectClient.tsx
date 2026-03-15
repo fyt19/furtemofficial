@@ -3,11 +3,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Github, Layers, Calendar, MonitorPlay, AlertCircle, Globe } from "lucide-react";
-import { useState } from "react";
 
 // Bu bileşen artık veriyi (project) dışarıdan "prop" olarak alacak
 export default function ProjectClient({ project, id }: { project: any, id: string }) {
-  const [iframeError, setIframeError] = useState(false);
 
   if (!project) {
     return (
@@ -120,7 +118,7 @@ export default function ProjectClient({ project, id }: { project: any, id: strin
                 </p>
             </div>
 
-            {/* 2. DESKTOP GÖRÜNÜM (Canlı Iframe) */}
+            {/* 2. DESKTOP GÖRÜNÜM – Proje görseli + canlı site linki (iframe çoğu sitede engelli olduğu için) */}
             <div className="hidden md:block border border-white/10 rounded-xl overflow-hidden bg-[#1a1a1a] shadow-2xl relative">
                 <div className="bg-[#111] px-4 py-3 flex items-center gap-4 border-b border-white/5">
                     <div className="flex gap-2">
@@ -129,29 +127,31 @@ export default function ProjectClient({ project, id }: { project: any, id: strin
                         <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                     </div>
                     <div className="flex-grow bg-[#000] rounded-md px-3 py-1 text-xs text-neutral-500 font-mono text-center truncate select-none">
-                        {project.liveUrl || 'localhost:3000'}
+                        {project.liveUrl || "proje görüntüleme"}
                     </div>
                 </div>
 
-                <div className="w-full h-[650px] bg-white relative">
-                    {(!project.liveUrl || iframeError) ? (
-                       <div className="absolute inset-0 bg-[#0a0a0a] flex flex-col items-center justify-center text-center p-8">
-                           <AlertCircle size={48} className="text-neutral-600 mb-4" />
-                           <h3 className="text-xl font-bold text-neutral-300 mb-2">Önizleme Yüklenemedi</h3>
-                           <p className="text-neutral-500 mb-6 max-w-md">Bu site güvenlik ayarları nedeniyle dışarıdan gömülmeye izin vermiyor veya canlı linki yok.</p>
-                           {project.liveUrl && (
-                               <a href={project.liveUrl} target="_blank" className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-full transition-colors">
-                                   Siteyi Yeni Sekmede Aç
-                               </a>
-                           )}
-                       </div>
+                <div className="w-full aspect-video min-h-[400px] bg-neutral-900 relative group">
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top"
+                    />
+                    {project.liveUrl ? (
+                        <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        >
+                            <span className="flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan-400 transition-colors shadow-xl">
+                                <Globe size={22} /> Canlı siteyi ziyaret et
+                            </span>
+                        </a>
                     ) : (
-                        <iframe 
-                            src={project.liveUrl} 
-                            className="w-full h-full border-none"
-                            title="Live Preview"
-                            onError={() => setIframeError(true)}
-                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                            <p className="text-neutral-400 text-sm">Canlı link mevcut değil</p>
+                        </div>
                     )}
                 </div>
             </div>

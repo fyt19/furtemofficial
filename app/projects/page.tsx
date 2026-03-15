@@ -3,6 +3,7 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { MouseEvent } from "react";
 
 // --- SPOTLIGHT KART (Bu sayfaya özel) ---
@@ -149,7 +150,9 @@ export default function AllProjects() {
             <Link href="/" className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-sm font-medium">
                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Ana Sayfa
             </Link>
-            <div className="text-xl font-bold tracking-tighter">FYT<span className="text-cyan-500">.</span></div>
+            <Link href="/" className="flex items-center">
+              <Image src="/furtem-logo.webp" alt="Furtem" width={120} height={32} className="h-8 w-auto invert" />
+            </Link>
         </header>
 
         <div className="text-center mb-20">
@@ -157,7 +160,7 @@ export default function AllProjects() {
                 Tüm Projeler
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-neutral-400 text-lg max-w-2xl mx-auto">
-                Fikir aşamasından canlıya, geliştirdiğim dijital ürünlerin tam listesi.
+                Fikir aşamasından canlıya, Furtem olarak geliştirdiğimiz dijital ürünlerin tam listesi.
             </motion.p>
         </div>
 

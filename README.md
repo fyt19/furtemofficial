@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# furtemofficial
+
+**Furtem** – Dijital ajans kurumsal sitesi. Next.js ile geliştirilmiştir.
+
+Bu proje [Next.js](https://nextjs.org) ile oluşturulmuştur ([`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)).
 
 ## Getting Started
 
