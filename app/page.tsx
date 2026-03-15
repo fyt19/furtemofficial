@@ -3,9 +3,9 @@
 import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform, Variants } from "framer-motion";
 import { 
   Github, Linkedin, ArrowRight, Code2, 
-  Database, Server, LayoutTemplate, Smartphone, Download,
+  Database, Server, Smartphone, Download,
   Briefcase, GraduationCap, Globe, Layers,
-  Sun, Moon
+  Sun, Moon, User
 } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -65,31 +65,30 @@ function SpotlightCard({ children, className = "", spotlightColor = "rgba(6, 182
 }
 
 // --- VERİLER ---
-// BURAYA 'image' ALANLARINI EKLEDİK
 const projects = [
     {
       id: "ihtiyacim-ne", 
       title: "İhtiyacım Ne?", 
       category: "Sosyal Platform",
-      desc: "İnsanların ihtiyaçlarını dile getirebildiği, filtrelemeli sosyal yardımlaşma ağı.",
+      desc: "İhtiyaç sahipleri ile yardımseverleri buluşturan ödüllü sosyal yardımlaşma ağı.",
       tech: ["PHP", "JavaScript", "MySQL"],
       gradient: "from-blue-600 to-cyan-500",
-      image: "/ihtiyacimne.png" // Public klasöründeki resim adı
+      image: "/ihtiyacimne.png"
     },
     {
-      id: "alpkanlar", 
-      title: "Alpkanlar Group", 
-      category: "Kurumsal",
-      desc: "Lüks kurumsal, yüksek performanslı ve şık Web sitesi.",
-      tech: ["Ajax", "PHP", "Js"],
+      id: "kucuk-burjuvazi", 
+      title: "Küçük Burjuvazi", 
+      category: "E-Ticaret",
+      desc: "Lüks tüketim odaklı, yüksek performanslı ve animasyonlu e-ticaret arayüzü.",
+      tech: ["Next.js", "Tailwind", "Framer"],
       gradient: "from-purple-600 to-pink-500",
-      image: "/alpkanlar.png"
+      image: "/burjuvazi.png"
     },
     {
       id: "gazete-ege", 
       title: "Gazete Ege CMS", 
       category: "CMS Sistemi",
-      desc: "Yerel bir haber platformu için özel geliştirilmiş dijital içerik yönetim paneli.",
+      desc: "Yüksek trafikli haber siteleri için özel geliştirilmiş içerik yönetim paneli.",
       tech: ["Node.js", "MongoDB", "React Admin"],
       gradient: "from-orange-600 to-red-500",
       image: "/gazeteege.png"
@@ -97,16 +96,17 @@ const projects = [
 ];
 
 const timeline = [
-  { year: "2026", title: "Master Hazırlığı", desc: "Veri Yapıları & Algoritmalar üzerine ileri seviye çalışmalar.", icon: GraduationCap },
-  { year: "2025", title: "Bumm Production", desc: "Prodüksiyon ajansı için Next-Gen web altyapısı.", icon: Briefcase },
-  { year: "2024", title: "Gazete Ege", desc: "Haber sistemleri ve dijital dönüşüm liderliği.", icon: Code2 }
+  { year: "2026", title: "Yüksek Lisans", desc: "Yazılım Mühendisliği Yüksek Lisansına başladım.", icon: GraduationCap },
+  { year: "2025", title: "Mezuniyet & Profesyonel Kariyer", desc: "Niğde Ömer Halisdemir Üni. Bilgisayar Müh. mezuniyeti. Adapha AI ve Kargom Ucuz (Xristal) şirketlerinde Mühendis ve Backend Developer olarak görev alma.", icon: Briefcase },
+  { year: "2024", title: "Full Stack Stajları", desc: "Tema Yazılım ve Atmosveri şirketlerinde E-ticaret, Flutter ve QR sistemleri üzerine yoğun staj dönemleri.", icon: Code2 },
+  { year: "2021", title: "Üniversite & TÜBİTAK", desc: "Bilgisayar Mühendisliği bölümüne başlangıç. TÜBİTAK araştırmacısı olarak büyük veri analizi ve Göktürk Takımı ile gömülü sistemler çalışmaları.", icon: Database },
+  { year: "2020", title: "Merhaba Dünya", desc: "Yazılım dünyasına ilk adım. HTML ve CSS ile web geliştirme temellerinin atılması.", icon: Globe }
 ];
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   
-  // SCROLL ANIMASYONU AYARLARI
   const targetRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -146,6 +146,12 @@ export default function Portfolio() {
             <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
             FYT
          </div>
+         
+         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+            <Link href="/projects" className="hover:text-black dark:hover:text-white transition-colors">Projeler</Link>
+            <Link href="/gallery" className="hover:text-black dark:hover:text-white transition-colors">Galeri</Link>
+         </div>
+
          <div className="flex items-center gap-4">
             {mounted && (
               <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="p-2.5 rounded-full bg-neutral-200 dark:bg-neutral-800 hover:scale-110 transition-transform active:scale-95">
@@ -186,8 +192,8 @@ export default function Portfolio() {
                             Merhaba, ben Furkan. Modern web teknolojileriyle sıradışı dijital deneyimler tasarlıyorum.
                         </p>
                         <div className="flex flex-col gap-4 justify-center items-center">
-                            <Link href="#projects" className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full w-full flex justify-center items-center gap-2">
-                                Projeler <ArrowRight size={18} />
+                            <Link href="/projects" className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full w-full flex justify-center items-center gap-2">
+                                Tüm Projeler <ArrowRight size={18} />
                             </Link>
                         </div>
                     </div>
@@ -202,7 +208,7 @@ export default function Portfolio() {
                         Modern web teknolojileriyle <span className="text-black dark:text-white underline decoration-cyan-500 underline-offset-4">sıradışı</span> dijital deneyimler tasarlıyorum.
                     </p>
                     <div className="flex flex-col gap-4 items-end">
-                        <Link href="#projects" className="px-10 py-5 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 shadow-lg shadow-cyan-500/20">
+                        <Link href="/projects" className="px-10 py-5 bg-black dark:bg-white text-white dark:text-black font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 shadow-lg shadow-cyan-500/20">
                            Çalışmalarım <ArrowRight size={20} />
                         </Link>
                         <a href="/cv.pdf" download className="px-10 py-5 border border-neutral-300 dark:border-white/20 font-bold rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 transition-all flex items-center gap-2">
@@ -227,6 +233,24 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* HAKKIMDA */}
+      <section className="py-24 px-4 bg-white/50 dark:bg-neutral-900/30 relative z-10 border-b border-neutral-200 dark:border-white/5 backdrop-blur-lg">
+        <div className="max-w-4xl mx-auto text-center">
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="inline-block p-4 rounded-full bg-cyan-500/10 mb-6">
+                <User size={32} className="text-cyan-500" />
+            </motion.div>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold mb-8">
+                Hakkımda
+            </motion.h2>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
+                Backend ağırlıklı çalışan; <span className="text-cyan-600 dark:text-cyan-400">mobil, web, masaüstü ve gömülü sistemler</span> üzerinde çözümler geliştiren bir bilgisayar mühendisiyim.
+            </motion.p>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-neutral-500 dark:text-neutral-400 mt-6 max-w-3xl mx-auto">
+                API mimarisi, veri tabanı yönetimi ve gerçek zamanlı sistemlerde deneyimliyim. Yapay zeka ve mikrodenetleyici tabanlı projelerle çok disiplinli altyapılarda rol alıyorum. Ayrıca 700+ öğrencili bir Udemy eğitmeniyim.
+            </motion.p>
+        </div>
+      </section>
+
       {/* UZMANLIK ALANLARI */}
       <section className="py-20 px-4 relative z-10 bg-white dark:bg-[#050505]">
         <div className="max-w-7xl mx-auto">
@@ -246,7 +270,7 @@ export default function Portfolio() {
                 <div className="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-500 mb-4 group-hover:scale-110 transition-transform duration-500 shadow-inner shadow-cyan-500/20"><Globe size={32} /></div>
                 <div className="relative z-10">
                     <h3 className="text-3xl font-bold mb-3 group-hover:text-cyan-500 transition-colors">Modern Web Geliştirme</h3>
-                    <p className="text-neutral-500 dark:text-neutral-400 text-lg">Next.js 14, React ve Tailwind CSS ile SEO uyumlu, ışık hızında web siteleri.</p>
+                    <p className="text-neutral-500 dark:text-neutral-400 text-lg">Next.js 14, React ve Tailwind CSS ile SEO uyumlu, ışık hızında web siteleri. Animasyonlar ve interaktif UI bileşenleri.</p>
                 </div>
             </SpotlightCard>
             <SpotlightCard className="md:col-span-1 rounded-[32px] p-8 flex flex-col justify-center items-center text-center group" spotlightColor="rgba(59, 130, 246, 0.4)">
@@ -273,7 +297,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* PROJELER - GÜNCELLENDİ: Artık Resim Gösteriyor */}
+      {/* SEÇİLİ PROJELER (ANA SAYFA) */}
       <section id="projects" className="py-32 px-4 bg-neutral-100 dark:bg-[#080808] relative z-10">
         <div className="max-w-7xl mx-auto">
             <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-4xl md:text-6xl font-bold mb-20">Seçili Projeler</motion.h2>
@@ -290,34 +314,41 @@ export default function Portfolio() {
                     </Link>
                   </div>
                   
-                  {/* RESİM ALANI (BURASI DEĞİŞTİ) */}
+                  {/* RESİM ALANI */}
                   <div className={`md:col-span-7 ${index % 2 !== 0 && 'md:order-1'} relative perspective-1000`}>
                      <div className={`absolute inset-4 bg-gradient-to-r ${project.gradient} blur-[60px] opacity-40 rounded-full group-hover:opacity-60 transition-opacity duration-500`}></div>
                      <Link href={`/projects/${project.id}`} className="block relative aspect-[16/10] bg-neutral-200 dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl group-hover:scale-[1.02] group-hover:-rotate-1 transition-transform duration-500 ease-out">
-                        {/* Eğer resim varsa resmi, yoksa placeholder'ı göster */}
                         <img 
                             src={project.image || `https://placehold.co/600x400/1a1a1a/FFF?text=${project.title}`} 
                             alt={project.title}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        {/* Üzerine gelince koyu perde */}
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                      </Link>
                   </div>
                 </motion.div>
             ))}
             </div>
+            
+            {/* Tüm Projeler Butonu */}
+            <div className="text-center mt-24">
+                <Link href="/projects" className="inline-flex items-center gap-2 px-8 py-4 border border-neutral-300 dark:border-white/20 rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 transition-all font-bold">
+                    Tüm Projeleri Gör <ArrowRight size={20} />
+                </Link>
+            </div>
         </div>
       </section>
 
-      {/* KARİYER */}
+      {/* KARİYER YOLCULUĞU (GÜNCELLENDİ) */}
       <section className="py-32 px-4 relative z-10">
          <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold mb-16 text-center">Kariyer Yolculuğu</h2>
             <div className="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-neutral-200 before:dark:via-neutral-800 before:to-transparent">
               {timeline.map((item, index) => (
                 <motion.div key={index} initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.5, delay: index * 0.2 }} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white dark:border-neutral-900 bg-neutral-200 dark:bg-neutral-800 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:scale-110 transition-transform"><item.icon size={18} className="text-neutral-500 group-hover:text-cyan-500 transition-colors" /></div>
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white dark:border-neutral-900 bg-neutral-200 dark:bg-neutral-800 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:scale-110 transition-transform">
+                    <item.icon size={18} className="text-neutral-500 group-hover:text-cyan-500 transition-colors" />
+                  </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/5 shadow-sm group-hover:shadow-xl group-hover:border-cyan-500/30 transition-all duration-300 relative overflow-hidden">
                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="flex items-center justify-between space-x-2 mb-2 relative z-10"><div className="font-bold text-lg">{item.title}</div><time className="font-mono text-xs text-cyan-600 dark:text-cyan-500 font-bold">{item.year}</time></div>
@@ -329,6 +360,7 @@ export default function Portfolio() {
          </div>
       </section>
 
+      {/* FOOTER */}
       <footer className="py-24 px-4 text-center bg-black text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.05] pointer-events-none"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/30 blur-[150px] rounded-full pointer-events-none"></div>
