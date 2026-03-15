@@ -69,7 +69,7 @@ const allProjects = [
     title: "İl İlçe Köy Bilgi Sistemi",
     category: "Web & Ödüllü Proje",
     desc: "TÜBİTAK 2209-A kabulü alan ve 'Halk Yararına Faydalı' kategorisinde özel ödül kazanan kapsamlı bilgi sistemi.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=TUBITAK+Proje",
+    image: "/fyt.png",
     tags: ["PHP", "MySQL", "TÜBİTAK"]
   },
   {
@@ -77,7 +77,7 @@ const allProjects = [
     title: "MOHU Mobil",
     category: "Mobil Uygulama",
     desc: "Niğde Ömer Halisdemir Üniversitesi öğrencileri için kampüs rehberi.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=MOHU+App",
+    image: "/oy.png",
     tags: ["Flutter", "API", "Eğitim"]
   },
   {
@@ -85,7 +85,7 @@ const allProjects = [
     title: "Kargom Ucuz Backend",
     category: "Backend & Lojistik",
     desc: "Kargo firmalarının tekliflerini karşılaştırıp en uygun maliyeti sunan sistem.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=Kargo+Backend",
+    image: "/my.png",
     tags: ["Node.js", "Rest API"]
   },
   {
@@ -93,7 +93,7 @@ const allProjects = [
     title: "VoltargeGo",
     category: "Mobil Uygulama",
     desc: "Elektrikli araç şarj istasyonlarını bulan ve rota oluşturan uygulama.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=VoltargeGo",
+    image: "/fyt.png",
     tags: ["Flutter", "Maps API"]
   },
   {
@@ -101,7 +101,7 @@ const allProjects = [
     title: "Face Detection AI",
     category: "Yapay Zeka",
     desc: "Galerinizdeki fotoğrafları tarayarak kişileri bulan yapay zeka uygulaması.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=Face+AI",
+    image: "/oy.png",
     tags: ["Python", "TensorFlow"]
   },
   {
@@ -109,7 +109,7 @@ const allProjects = [
     title: "SosyalApp",
     category: "Sosyal Medya",
     desc: "Yapay zeka ile içerik analizi yapan yeni nesil sosyal platform.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=Sosyal+App",
+    image: "/my.png",
     tags: ["AI", "Flutter", "Firebase"]
   },
   {
@@ -117,7 +117,7 @@ const allProjects = [
     title: "AI Chatt",
     category: "Yapay Zeka",
     desc: "Llama dil modeli ile geliştirilmiş sohbet botu.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=AI+Chatt",
+    image: "/fyt.png",
     tags: ["LLM", "Llama", "Python"]
   },
   {
@@ -125,7 +125,7 @@ const allProjects = [
     title: "Gano Hesapla",
     category: "Eğitim Aracı",
     desc: "Üniversite ders notlarını PDF'ten okuyarak ortalama hesaplayan araç.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=Gano+App",
+    image: "/oy.png",
     tags: ["OCR", "Flutter"]
   },
   {
@@ -133,7 +133,7 @@ const allProjects = [
     title: "B2B E-Ticaret",
     category: "E-Ticaret",
     desc: "B2B ve B2C süreçlerini yöneten kapsamlı mobil e-ticaret arayüzü.",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=E-Ticaret",
+    image: "/my.png",
     tags: ["Flutter", "Rest API"]
   }
 ];

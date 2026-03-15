@@ -64,6 +64,42 @@ function SpotlightCard({ children, className = "", spotlightColor = "rgba(6, 182
   );
 }
 
+// --- EKİP KARTI (görsel + yüklenmezse harf) ---
+function TeamMemberCard({ member, index }: { member: { initial: string; name: string; image: string; gradient: string; ring: string }; index: number }) {
+  const [imgError, setImgError] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.15 }}
+      whileHover={{ y: -8 }}
+      className="group flex flex-col items-center text-center"
+    >
+      <div className={`relative mb-6 rounded-2xl bg-gradient-to-br ${member.gradient} p-[3px] shadow-xl ${member.ring} ring-4 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl`}>
+        <div className="relative w-44 h-56 overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 border-4 border-white dark:border-neutral-800">
+          {!imgError ? (
+            <Image
+              src={member.image}
+              alt={member.name}
+              fill
+              className="object-cover"
+              sizes="176px"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <span className="flex h-full w-full items-center justify-center text-3xl font-black text-neutral-800 dark:text-white">
+              {member.initial}
+            </span>
+          )}
+        </div>
+      </div>
+      <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">{member.name}</h3>
+      <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium">Bilgisayar Mühendisi</p>
+    </motion.div>
+  );
+}
+
 // --- VERİLER ---
 const projects = [
     {
@@ -259,27 +295,11 @@ export default function Portfolio() {
           </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { initial: "F", name: "Furkan Yüksel Temelci", gradient: "from-cyan-500 to-blue-600", ring: "ring-cyan-500/30" },
-              { initial: "M", name: "Mehmethan Yılmaz", gradient: "from-violet-500 to-purple-600", ring: "ring-violet-500/30" },
-              { initial: "O", name: "Oğuzhan Yıldırır", gradient: "from-amber-500 to-orange-600", ring: "ring-amber-500/30" },
+              { initial: "F", name: "Furkan Yüksel Temelci", image: "/fyt.png", gradient: "from-cyan-500 to-blue-600", ring: "ring-cyan-500/30" },
+              { initial: "M", name: "Mehmethan Yılmaz", image: "/my.png", gradient: "from-violet-500 to-purple-600", ring: "ring-violet-500/30" },
+              { initial: "O", name: "Oğuzhan Yıldırır", image: "/oy.png", gradient: "from-amber-500 to-orange-600", ring: "ring-amber-500/30" },
             ].map((member, index) => (
-              <motion.div
-                key={member.initial}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                whileHover={{ y: -8 }}
-                className="group flex flex-col items-center text-center"
-              >
-                <div className={`relative mb-6 rounded-full bg-gradient-to-br ${member.gradient} p-[3px] shadow-xl ${member.ring} ring-4 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl`}>
-                  <div className="flex h-28 w-28 items-center justify-center rounded-full bg-white dark:bg-neutral-900 text-3xl font-black text-neutral-800 dark:text-white border-4 border-white dark:border-neutral-800">
-                    {member.initial}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">{member.name}</h3>
-                <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium">Bilgisayar Mühendisi</p>
-              </motion.div>
+              <TeamMemberCard key={member.initial} member={member} index={index} />
             ))}
           </div>
         </div>

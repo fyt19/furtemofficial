@@ -88,64 +88,37 @@ export default function ProjectClient({ project, id }: { project: any, id: strin
             </div>
         </div>
 
-        {/* ÖNİZLEME ALANI */}
+        {/* ÖNİZLEME ALANI – Proje görseli (iframe birçok sitede "bağlanmayı reddetti" verdiği için kaldırıldı) */}
         <section className="mb-24">
             <div className="flex items-center gap-4 mb-8">
                 <h2 className="text-3xl font-bold">Önizleme</h2>
                 <div className="h-[1px] bg-white/10 flex-grow"></div>
             </div>
 
-            {/* 1. MOBİL GÖRÜNÜM (Sadece Resim) */}
-            <div className="md:hidden block">
-                <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl">
-                    <div className="aspect-video bg-neutral-800 flex items-center justify-center text-neutral-500 relative">
-                        <img 
-                            src={project.image} 
-                            alt={project.title} 
-                            className="w-full h-full object-cover"
-                        />
-                         {project.liveUrl && (
-                            <a href={project.liveUrl} target="_blank" className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 hover:opacity-100 transition-opacity backdrop-blur-sm">
-                                <span className="px-6 py-3 bg-white text-black font-bold rounded-full flex items-center gap-2 transform hover:scale-105 transition-transform">
-                                    <Globe size={18} /> Telefondan Aç
-                                </span>
-                            </a>
-                         )}
-                    </div>
-                </div>
-                <p className="text-center text-neutral-500 text-xs mt-3 flex items-center justify-center gap-1">
-                    <MonitorPlay size={12} /> Mobilde performans için ekran görüntüsü gösteriliyor.
-                </p>
-            </div>
-
-            {/* 2. DESKTOP GÖRÜNÜM – Canlı site iframe içinde (mümkün olduğu sürece tam etkileşimli) */}
-            <div className="hidden md:block border border-white/10 rounded-xl overflow-hidden bg-[#1a1a1a] shadow-2xl relative">
-                <div className="bg-[#111] px-4 py-3 flex items-center gap-4 border-b border-white/5">
-                    <div className="flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                    </div>
-                    <div className="flex-grow bg-[#000] rounded-md px-3 py-1 text-xs text-neutral-500 font-mono text-center truncate select-none">
-                        {project.liveUrl || "Canlı önizleme mevcut değil"}
-                    </div>
-                </div>
-
-                <div className="w-full h-[650px] bg-neutral-900 relative">
-                    {project.liveUrl ? (
-                        <iframe
-                            src={project.liveUrl}
-                            className="w-full h-full border-none"
-                            title={`${project.title} canlı önizleme`}
-                        />
-                    ) : (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <p className="text-neutral-400 text-sm">Bu proje için canlı link tanımlı değil.</p>
-                        </div>
+            <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-neutral-900">
+                <div className="aspect-video bg-neutral-800 flex items-center justify-center relative">
+                    <img
+                        src={project.image}
+                        alt={`${project.title} önizleme`}
+                        className="w-full h-full object-cover"
+                    />
+                    {project.liveUrl && (
+                        <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 hover:opacity-100 transition-opacity backdrop-blur-sm"
+                        >
+                            <span className="px-6 py-3 bg-white text-black font-bold rounded-full flex items-center gap-2 transform hover:scale-105 transition-transform">
+                                <Globe size={18} /> Siteyi Aç
+                            </span>
+                        </a>
                     )}
                 </div>
-                <p className="mt-3 text-xs text-neutral-500">
-                    Not: Bazı siteler güvenlik sebebiyle iframe içinde açılmayı engelleyebilir. Böyle bir durumda sayfa beyaz görünebilir.
+                <p className="text-center text-neutral-500 text-xs py-3">
+                    {project.liveUrl
+                        ? "Canlı siteyi görmek için yukarıdaki alana tıklayın veya üstteki \"Siteyi Ziyaret Et\" butonunu kullanın."
+                        : "Bu proje için canlı link tanımlı değil."}
                 </p>
             </div>
         </section>

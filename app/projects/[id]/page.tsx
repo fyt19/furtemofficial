@@ -50,7 +50,7 @@ const projectsData: Record<string, any> = {
     tech: ["PHP", "MySQL", "Data Analysis"],
     liveUrl: "https://il-ilce-koy-bilgi-sistemi.com.tr/",
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=TUBITAK+Proje",
+    image: "/fyt.png",
     features: ["Veri Analizi", "TÜBİTAK Ödülü", "Halk Yararına Teknoloji"]
   },
   "mohu-app": {
@@ -62,7 +62,7 @@ const projectsData: Record<string, any> = {
     tech: ["Flutter", "Dart", "Rest API"],
     liveUrl: "", 
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=MOHU+App",
+    image: "/oy.png",
     features: ["Kampüs Haritası", "Yemekhane Menüsü", "Sınav Takvimi"]
   },
   "kargom-ucuz": {
@@ -74,7 +74,7 @@ const projectsData: Record<string, any> = {
     tech: ["Node.js", "Express", "Microservices"],
     liveUrl: "",
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=Kargo+Backend",
+    image: "/my.png",
     features: ["Fiyat Karşılaştırma Algoritması", "Çoklu API Entegrasyonu", "Yüksek Performans"]
   },
   "voltarge-go": {
@@ -86,7 +86,7 @@ const projectsData: Record<string, any> = {
     tech: ["Flutter", "Google Maps API", "Geolocation"],
     liveUrl: "",
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=VoltargeGo",
+    image: "/fyt.png",
     features: ["Rota Optimizasyonu", "İstasyon Filtreleme", "Gerçek Zamanlı Konum"]
   },
   "face-detection": {
@@ -98,7 +98,7 @@ const projectsData: Record<string, any> = {
     tech: ["Python", "TensorFlow", "OpenCV"],
     liveUrl: "",
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=Face+AI",
+    image: "/oy.png",
     features: ["Yüz Tanıma", "Hızlı Tarama", "Yerel İşleme (Gizlilik)"]
   },
   "sosyal-app": {
@@ -110,7 +110,7 @@ const projectsData: Record<string, any> = {
     tech: ["Flutter", "Firebase", "AI Analysis"],
     liveUrl: "",
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=Sosyal+App",
+    image: "/my.png",
     features: ["AI İçerik Analizi", "Temiz Akış", "Topluluk Odaklı"]
   },
   "al-chatt": {
@@ -122,7 +122,7 @@ const projectsData: Record<string, any> = {
     tech: ["Python", "Llama LLM", "PyTorch"],
     liveUrl: "",
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=AI+Chatt",
+    image: "/fyt.png",
     features: ["Doğal Dil İşleme", "Bağlam Koruma", "Yüksek Doğruluk"]
   },
   "gano-hesapla": {
@@ -134,7 +134,7 @@ const projectsData: Record<string, any> = {
     tech: ["Flutter", "OCR Technology", "PDF Parsing"],
     liveUrl: "https://ganohesapla.com",
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=Gano+App",
+    image: "/oy.png",
     features: ["PDF Okuma (OCR)", "Hızlı Hesaplama", "Kullanıcı Dostu Arayüz"]
   },
   "eticaret-b2b": {
@@ -146,7 +146,7 @@ const projectsData: Record<string, any> = {
     tech: ["Flutter", "Rest API", "State Management"],
     liveUrl: "",
     githubUrl: "https://github.com/fyt19",
-    image: "https://placehold.co/600x400/1a1a1a/FFF?text=E-Ticaret",
+    image: "/my.png",
     features: ["Çoklu Kullanıcı Tipi", "Stok Yönetimi", "Sipariş Takibi"]
   }
 };
